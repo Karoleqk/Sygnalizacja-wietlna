@@ -1,29 +1,40 @@
-const int RED = 2;
-const int YELLOW = 4;
-const int GREEN = 7;
+#include "TrafficLight.h"
+
+TrafficLight trafficLightA(2, 4, 7);
+TrafficLight trafficLightB(8, 12, 13);
 
 void setup() {
   // put your setup code here, to run once:
-  pinMode(RED, OUTPUT);
-  pinMode(YELLOW, OUTPUT);
-  pinMode(GREEN, OUTPUT);
+  trafficLightA.setPinsAsOutput();
+  trafficLightB.setPinsAsOutput();
 
-  digitalWrite(RED, HIGH);
+  trafficLightA.phaseThree();
+  trafficLightB.phaseOne();
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
-  delay(5000);
-  digitalWrite(YELLOW, HIGH);
-  delay(1000);
-  digitalWrite(RED, LOW);
-  digitalWrite(YELLOW, LOW);
-  digitalWrite(GREEN, HIGH);
   delay(8000);
+  trafficLightA.phaseFour();
 
-  digitalWrite(GREEN, LOW);
-  digitalWrite(YELLOW, HIGH);
   delay(3000);
-  digitalWrite(YELLOW, LOW);
-  digitalWrite(RED, HIGH);
+  trafficLightA.phaseOne();
+
+  delay(1000);
+  trafficLightB.phaseTwo();
+  
+  delay(1000);
+  trafficLightB.phaseThree();
+
+  delay(8000);
+  trafficLightB.phaseFour();
+
+  delay(3000);
+  trafficLightB.phaseOne();
+
+  delay(1000);
+  trafficLightA.phaseTwo();
+
+  delay(1000);
+  trafficLightA.phaseThree();
 }
